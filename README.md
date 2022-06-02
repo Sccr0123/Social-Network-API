@@ -37,21 +37,21 @@ The following animations show examples of the application's API routes being tes
 
 The first animation shows GET routes to return all users and all thoughts being tested in Insomnia:
 
-![Homework Demo 01](./Assets/18-nosql-homework-demo-01.gif)
+![Homework Demo 01](./public/assets/18-nosql-homework-demo-01.gif)
 
 The second animation shows GET routes to return a single user and a single thought being tested in Insomnia:
 
-![Homework Demo 02](./Assets/18-nosql-homework-demo-02.gif)
+![Homework Demo 02](./public/assets/18-nosql-homework-demo-02.gif)
 
 The third animation shows the POST, PUT, and DELETE routes for users being tested in Insomnia:
 
-![Homework Demo 03](./Assets/18-nosql-homework-demo-03.gif)
+![Homework Demo 03](./public/assets/18-nosql-homework-demo-03.gif)
 
 Your walkthrough video should also show the POST, PUT, and DELETE routes for thoughts being tested in Insomnia.
 
 The final animation shows the POST and DELETE routes for a user’s friend list being tested in Insomnia:
 
-![Homework Demo 04](./Assets/18-nosql-homework-demo-04.gif)
+![Homework Demo 04](./public/assets/18-nosql-homework-demo-04.gif)
 
 Your walkthrough video should also show the POST and DELETE routes for reactions to thoughts being tested in Insomnia.
 
