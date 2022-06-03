@@ -6,7 +6,6 @@ Your challenge is to build an API for a social network using Express.js for rout
 
 Because this application won’t be deployed, you’ll also need to create a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met. You’ll need to submit a link to the video and add it to the README of your project.
 
-
 ## User Story
 
 ```md
@@ -14,7 +13,6 @@ AS A social media startup
 I WANT an API for my social network that uses a NoSQL database
 SO THAT my website can handle large amounts of unstructured data
 ```
-
 
 ## Acceptance Criteria
 
@@ -29,7 +27,6 @@ THEN I am able to successfully create, update, and delete users and thoughts in 
 WHEN I test API POST and DELETE routes in Insomnia
 THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 ```
-
 
 ## Mock-Up
 
@@ -55,7 +52,6 @@ The final animation shows the POST and DELETE routes for a user’s friend list 
 
 Your walkthrough video should also show the POST and DELETE routes for reactions to thoughts being tested in Insomnia.
 
-
 ## Getting Started
 
 Use the following guidelines to set up your models and API routes:
@@ -64,23 +60,26 @@ Use the following guidelines to set up your models and API routes:
 
 **User**
 
-* `username`
-    * String
-    * Unique
-    * Required
-    * Trimmed
+-   `username`
 
-* `email`
-    * String
-    * Required
-    * Unique
-    * Must match a valid email address (look into Mongoose's matching validation)
+    -   String
+    -   Unique
+    -   Required
+    -   Trimmed
 
-* `thoughts`
-    * Array of `_id` values referencing the `Thought` model
+-   `email`
 
-* `friends`
-    * Array of `_id` values referencing the `User` model (self-reference)
+    -   String
+    -   Required
+    -   Unique
+    -   Must match a valid email address (look into Mongoose's matching validation)
+
+-   `thoughts`
+
+    -   Array of `_id` values referencing the `Thought` model
+
+-   `friends`
+    -   Array of `_id` values referencing the `User` model (self-reference)
 
 **Schema Settings**
 
@@ -90,22 +89,25 @@ Create a virtual called `friendCount` that retrieves the length of the user's `f
 
 **Thought**
 
-* `thoughtText`
-    * String
-    * Required
-    * Must be between 1 and 280 characters
+-   `thoughtText`
 
-* `createdAt`
-    * Date
-    * Set default value to the current timestamp
-    * Use a getter method to format the timestamp on query
+    -   String
+    -   Required
+    -   Must be between 1 and 280 characters
 
-* `username` - Which user created this thought
-    * String
-    * Required
+-   `createdAt`
 
-* `reactions` (like replies)
-    * Array of nested documents created with the `reactionSchema`
+    -   Date
+    -   Set default value to the current timestamp
+    -   Use a getter method to format the timestamp on query
+
+-   `username` - Which user created this thought
+
+    -   String
+    -   Required
+
+-   `reactions` (like replies)
+    -   Array of nested documents created with the `reactionSchema`
 
 **Schema Settings**
 
@@ -115,50 +117,52 @@ Create a virtual called `reactionCount` that retrieves the length of the thought
 
 **Reaction** (SCHEMA ONLY)
 
-* `reactionId`
-    * Use Mongoose's ObjectId data type
-    * Default value is set to a new ObjectId
+-   `reactionId`
 
-* `reactionBody`
-    * String
-    * Required
-    * 280 character maximum
+    -   Use Mongoose's ObjectId data type
+    -   Default value is set to a new ObjectId
 
-* `username`
-    * String
-    * Required
+-   `reactionBody`
 
-* `createdAt`
-    * Date
-    * Set default value to the current timestamp
-    * Use a getter method to format the timestamp on query
+    -   String
+    -   Required
+    -   280 character maximum
+
+-   `username`
+
+    -   String
+    -   Required
+
+-   `createdAt`
+    -   Date
+    -   Set default value to the current timestamp
+    -   Use a getter method to format the timestamp on query
 
 **Schema Settings**
 
 This will not be a model, but rather used as the `reaction` field's subdocument schema in the `Thought` model.
 
-
 ### API Routes
 
 **`/api/users`**
 
-* `GET` all users
+-   `GET` all users
 
-* `GET` a single user by its `_id` and populated thought and friend data
+-   `GET` a single user by its `_id` and populated thought and friend data
 
-* `POST` a new user:
+-   `POST` a new user:
 
 ```json
 // example data
 {
-  "username": "lernantino",
-  "email": "lernantino@gmail.com"
+	"username": "lernantino",
+	"email": "lernantino@gmail.com"
 }
 ```
 
-* `PUT` to update a user by its `_id`
+-   `PUT` to update a user by its `_id`
 
-* `DELETE` to remove user by its `_id`
+-   `DELETE` to remove user by its `_id`
 
 **BONUS**: Remove a user's associated thoughts when deleted
 
@@ -166,48 +170,49 @@ This will not be a model, but rather used as the `reaction` field's subdocument 
 
 **`/api/users/:userId/friends/:friendId`**
 
-* `POST` to add a new friend to a user's friend list
+-   `POST` to add a new friend to a user's friend list
 
-* `DELETE` to remove a friend from a user's friend list
+-   `DELETE` to remove a friend from a user's friend list
 
 ---
 
 **`/api/thoughts`**
 
-* `GET` to get all thoughts
+-   `GET` to get all thoughts
 
-* `GET` to get a single thought by its `_id`
+-   `GET` to get a single thought by its `_id`
 
-* `POST` to create a new thought (don't forget to push the created thought's `_id` to the associated user's `thoughts` array field)
+-   `POST` to create a new thought (don't forget to push the created thought's `_id` to the associated user's `thoughts` array field)
 
 ```json
 // example data
 {
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
+	"thoughtText": "Here's a cool thought...",
+	"username": "lernantino",
+	"userId": "5edff358a0fcb779aa7b118b"
 }
 ```
 
-* `PUT` to update a thought by its `_id`
+-   `PUT` to update a thought by its `_id`
 
-* `DELETE` to remove a thought by its `_id`
+-   `DELETE` to remove a thought by its `_id`
 
 ---
 
 **`/api/thoughts/:thoughtId/reactions`**
 
-* `POST` to create a reaction stored in a single thought's `reactions` array field
+-   `POST` to create a reaction stored in a single thought's `reactions` array field
 
-* `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
+-   `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
 
 ## Review
 
 You are required to submit BOTH of the following for review:
 
-* A walkthrough video demonstrating the functionality of the application and all of the acceptance criteria being met.
+-   A walkthrough video demonstrating the functionality of the application and all of the acceptance criteria being met.
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+-   The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
 
-- - -
+---
+
 © 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
