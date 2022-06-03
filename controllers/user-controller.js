@@ -24,7 +24,7 @@ const UserController = {
 			})
 			.populate({
 				path: "friends",
-				select: "-__v",
+				select: "username",
 			})
 			.select("-__v")
 			.then((dbUserData) => res.json(dbUserData))
