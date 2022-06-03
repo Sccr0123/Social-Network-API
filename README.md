@@ -34,7 +34,7 @@ The following animations show examples of the application's API routes being tes
 
 The first animation shows GET routes to return all users and all thoughts being tested in Insomnia:
 
-![Homework Demo 01]()
+![Homework Demo 01](./public/assets/18-nosql-homework-demo-01.gif)
 
 The second animation shows GET routes to return a single user and a single thought being tested in Insomnia:
 
