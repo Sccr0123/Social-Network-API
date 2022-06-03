@@ -1,6 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
-const { schema } = require("./User");
 
 const ReactionSchema = new Schema({
 	reactionId: {
@@ -47,12 +46,11 @@ const ThoughtSchema = new Schema(
 			virtuals: true,
 			getters: true,
 		},
-		// prevents virtuals from creating duplicate of _id as `id`
 		id: false,
 	}
 );
 
-UserSchema.virtual("reactionCount").get(function () {
+ThoughtSchema.virtual("reactionCount").get(function () {
 	return this.reactions.length;
 });
 
