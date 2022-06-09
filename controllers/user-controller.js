@@ -58,7 +58,7 @@ const UserController = {
 	},
 
 	deleteUser({ params }, res) {
-		Pizza.findOneAndDelete({ _id: params.id })
+		User.findOneAndDelete({ _id: params.id })
 			.then((dbUserData) => res.json(dbUserData))
 			.catch((err) => res.json(err));
 	},
