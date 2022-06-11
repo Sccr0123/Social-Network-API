@@ -75,6 +75,8 @@ const UserController = {
 					return;
 				}
 				res.json(dbUserData);
+
+				Thought.deleteMany({ _id: { $in: dbUserData.thoughts } });
 			})
 			.catch((err) => res.status(400).json(err));
 	},
